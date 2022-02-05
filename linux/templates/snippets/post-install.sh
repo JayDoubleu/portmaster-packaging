@@ -16,7 +16,8 @@ installSystemdSupport
 # Fix selinux permissions for portmaster-start
 #
 if command -V getenforce >/dev/null 2>&1; then
-    chcon -t bin_t /opt/safing/portmaster/portmaster-start
+    semanage fcontext -a -t bin_t /opt/safing/portmaster/portmaster-start
+    restorecon -v /opt/safing/portmaster/portmaster-start
 fi
 
 #
